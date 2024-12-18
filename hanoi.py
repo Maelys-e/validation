@@ -38,54 +38,57 @@ class Hanoi :
         else :
             droite = 0
         #print ("gauche", gauche, " milieu", milieu, " droite", droite)
-        if droite < milieu and milieu < gauche :
-            neighbours.append(HanoiState(i[0] + [milieu], i[1][:-1], i[2]))
-            if droite :
-                neighbours.append(HanoiState(i[0], i[1] + [droite], i[2][:-1]))
-                neighbours.append(HanoiState(i[0] + [droite], i[1], i[2][:-1]))
-            else :
-                neighbours.append(HanoiState(i[0], i[1][:-1], i[2] + [milieu]))
-                neighbours.append(HanoiState(i[0][:-1], i[1], i[2] + [gauche]))
-        elif droite < gauche and gauche < milieu :
-            neighbours.append(HanoiState(i[0][:-1], i[1] + [gauche], i[2]))
-            if droite :
-                neighbours.append(HanoiState(i[0] + [droite], i[1], i[2][:-1]))
-                neighbours.append(HanoiState(i[0], i[1] + [droite], i[2][:-1]))
-            else :
-                neighbours.append(HanoiState(i[0], i[1][:-1], i[2] + [milieu]))
-                neighbours.append(HanoiState(i[0][:-1], i[1], i[2] + [gauche]))
-        elif gauche < milieu and milieu < droite :
-            neighbours.append(HanoiState(i[0], i[1][:-1], i[2] + [milieu]))
-            if gauche :
-                neighbours.append(HanoiState(i[0][:-1], i[1] + [gauche], i[2]))
-                neighbours.append(HanoiState(i[0][:-1], i[1], i[2] + [gauche]))
-            else :
+        if droite < milieu and droite < gauche:
+            if milieu < gauche :
                 neighbours.append(HanoiState(i[0] + [milieu], i[1][:-1], i[2]))
-                neighbours.append(HanoiState(i[0] + [droite], i[1], i[2][:-1]))
-        elif gauche < droite and droite < milieu :
-            neighbours.append(HanoiState(i[0], i[1] + [droite], i[2][:-1]))
-            if gauche :
-                neighbours.append(HanoiState(i[0][:-1], i[1], i[2] + [gauche]))
-                neighbours.append(HanoiState(i[0][:-1], i[1] + [gauche], i[2]))
-            else :
-                neighbours.append(HanoiState(i[0] + [milieu], i[1][:-1], i[2]))
-                neighbours.append(HanoiState(i[0] + [droite], i[1], i[2][:-1]))
-        elif milieu < gauche and gauche < droite :
-            neighbours.append(HanoiState(i[0][:-1], i[1], i[2] + [gauche]))
-            if milieu :
-                neighbours.append(HanoiState(i[0], i[1][:-1], i[2] + [milieu]))
-                neighbours.append(HanoiState(i[0] + [milieu], i[1][:-1], i[2]))
+                if droite :
+                    neighbours.append(HanoiState(i[0], i[1] + [droite], i[2][:-1]))
+                    neighbours.append(HanoiState(i[0] + [droite], i[1], i[2][:-1]))
+                else :
+                    neighbours.append(HanoiState(i[0], i[1][:-1], i[2] + [milieu]))
+                    neighbours.append(HanoiState(i[0][:-1], i[1], i[2] + [gauche]))
             else :
                 neighbours.append(HanoiState(i[0][:-1], i[1] + [gauche], i[2]))
-                neighbours.append(HanoiState(i[0], i[1] + [droite], i[2][:-1]))
-        elif milieu < droite and droite < gauche :
-            neighbours.append(HanoiState(i[0] + [droite], i[1], i[2][:-1]))
-            if milieu :
+                if droite :
+                    neighbours.append(HanoiState(i[0] + [droite], i[1], i[2][:-1]))
+                    neighbours.append(HanoiState(i[0], i[1] + [droite], i[2][:-1]))
+                else :
+                    neighbours.append(HanoiState(i[0], i[1][:-1], i[2] + [milieu]))
+                    neighbours.append(HanoiState(i[0][:-1], i[1], i[2] + [gauche]))
+        elif gauche < milieu and gauche < droite :
+            if milieu < droite :
                 neighbours.append(HanoiState(i[0], i[1][:-1], i[2] + [milieu]))
-                neighbours.append(HanoiState(i[0] + [milieu], i[1][:-1], i[2]))
+                if gauche :
+                    neighbours.append(HanoiState(i[0][:-1], i[1] + [gauche], i[2]))
+                    neighbours.append(HanoiState(i[0][:-1], i[1], i[2] + [gauche]))
+                else :
+                    neighbours.append(HanoiState(i[0] + [milieu], i[1][:-1], i[2]))
+                    neighbours.append(HanoiState(i[0] + [droite], i[1], i[2][:-1]))
             else :
-                neighbours.append(HanoiState(i[0][:-1], i[1] + [gauche], i[2]))
                 neighbours.append(HanoiState(i[0], i[1] + [droite], i[2][:-1]))
+                if gauche :
+                    neighbours.append(HanoiState(i[0][:-1], i[1], i[2] + [gauche]))
+                    neighbours.append(HanoiState(i[0][:-1], i[1] + [gauche], i[2]))
+                else :
+                    neighbours.append(HanoiState(i[0] + [milieu], i[1][:-1], i[2]))
+                    neighbours.append(HanoiState(i[0] + [droite], i[1], i[2][:-1]))
+        elif milieu < gauche and milieu < droite :
+            if gauche < droite :
+                neighbours.append(HanoiState(i[0][:-1], i[1], i[2] + [gauche]))
+                if milieu :
+                    neighbours.append(HanoiState(i[0], i[1][:-1], i[2] + [milieu]))
+                    neighbours.append(HanoiState(i[0] + [milieu], i[1][:-1], i[2]))
+                else :
+                    neighbours.append(HanoiState(i[0][:-1], i[1] + [gauche], i[2]))
+                    neighbours.append(HanoiState(i[0], i[1] + [droite], i[2][:-1]))
+            else :
+                neighbours.append(HanoiState(i[0] + [droite], i[1], i[2][:-1]))
+                if milieu :
+                    neighbours.append(HanoiState(i[0], i[1][:-1], i[2] + [milieu]))
+                    neighbours.append(HanoiState(i[0] + [milieu], i[1][:-1], i[2]))
+                else :
+                    neighbours.append(HanoiState(i[0][:-1], i[1] + [gauche], i[2]))
+                    neighbours.append(HanoiState(i[0], i[1] + [droite], i[2][:-1]))
         elif gauche == droite :
             neighbours.append(HanoiState(i[0], i[1][:-1], i[2] + [milieu]))
             neighbours.append(HanoiState(i[0] + [milieu], i[1][:-1], i[2]))
