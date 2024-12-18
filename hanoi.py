@@ -136,12 +136,9 @@ class HanoiState():
     def __str__(self):
         return f"HanoiState(state={self.state[0], self.state[1], self.state[2]})"
 
-def make_hashable(item):
-    if isinstance(item, list):
-        #print ("item to check", item)
-        #return tuple(make_hashable(sub_item) for sub_item in item)
-        return tuple(map(tuple, item))
-    return item
+
+def predicate_hanoi(n) :
+    return n.state[0] == n.state[1] # sont forcément nuls car il n'y a pas de doublons
 
 g4 = Hanoi(2)
 
