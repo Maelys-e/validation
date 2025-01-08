@@ -1,4 +1,5 @@
 import copy
+import bibliotheque as algo
 
 def generate_graph_hanoi(roots, neighbours):
     list = copy.deepcopy(roots)
@@ -22,7 +23,7 @@ class Hanoi :
         self._roots = [HanoiState(list(range(N, 0, -1)), [], [])]
 
     def neighbours(self, s) :
-        print(s)
+        #print(s)
         i = s.state
         #print("Là", i)
         neighbours = []
@@ -122,8 +123,8 @@ class HanoiState():
     def __eq__(self, other):
         if not isinstance(other, HanoiState):
             return False
-        return self.state == other.state
-        #for i in range(len(self.neighbours)) :
+        x = self.state == other.state
+        return x #for i in range(len(self.neighbours)) :
             #if self.neighbours[i] != other.neighbours[i]:
                 #return False
         #return True
@@ -134,7 +135,7 @@ class HanoiState():
     def __iter__(self) :
         return iter(self.state)
     
-    def __str__(self):
+    def __repr__(self):
         return f"HanoiState(state={self.state[0], self.state[1], self.state[2]})"
 
 
@@ -145,7 +146,15 @@ if __name__ == "__main__":
     g4 = Hanoi(2)
 
     r = g4.roots
-    print (r)
+    print ("Roots : ", r)
 
-    g4.neighbours(r[0])
-    print (g4)
+    n = g4.neighbours(r[0])
+    print ("Neighbours : ", n)
+
+    print("Graph : ", g4)
+
+    (o, n, k) = algo.predicate_finder(g4, lambda _: False)
+
+    print("K : ", k)
+    print("O : ", o)
+    print("N : ", n)
