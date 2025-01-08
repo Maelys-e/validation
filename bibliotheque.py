@@ -17,12 +17,12 @@ def parcours_bfs_predicate(G, predicate, opaque) :
     k = set()
     F = deque()
     while (F or Init) :
+        N = None
         if Init :
             N = G.roots
         else :
             current = F.popleft()
-            if current in G.graph.keys():
-                N = G.graph[current]
+            N = G.neighbours(current)
         Init = False
         for n in N :
             if n not in k :
