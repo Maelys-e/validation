@@ -24,7 +24,7 @@ class DictRootedGraph :
     def roots(self) :
         return self._roots
     @property
-    def graph(self) :
+    def neighbours(self) :
         return self._data
     
     def __str__(self):
@@ -37,8 +37,8 @@ def parcours_full(G) :
         i = currents[-1]
         currents.remove(i)
         previous.append(i)
-        if i in G.graph.keys() :
-            for j in G.graph[i] :
+        if i in G.neighbours.keys() :
+            for j in G.neighbours[i] :
                 if j not in previous:
                     currents.append(j)
     return previous
@@ -53,8 +53,8 @@ def parcours_rapide_bfs(G) :
             N = G.roots
         else :
             current = F.popleft()
-            if current in G.graph.keys():
-                N = G.graph[current]
+            if current in G.neighbours.keys():
+                N = G.neighbours[current]
         Init = False
         for n in N :
             if n not in k :
