@@ -22,6 +22,7 @@ class Hanoi :
         self._roots = [HanoiState(list(range(N, 0, -1)), [], [])]
 
     def neighbours(self, s) :
+        print(s)
         i = s.state
         #print("Là", i)
         neighbours = []
@@ -140,10 +141,11 @@ class HanoiState():
 def predicate_hanoi(n) :
     return n.state[0] == n.state[1] # sont forcément nuls car il n'y a pas de doublons
 
-g4 = Hanoi(2)
+if __name__ == "__main__":
+    g4 = Hanoi(2)
 
-r = g4.roots
-print (r)
+    r = g4.roots
+    print (r)
 
-g4.neighbours(r[0])
-print (g4)
+    g4.neighbours(r[0])
+    print (g4)
