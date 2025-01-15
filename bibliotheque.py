@@ -27,7 +27,6 @@ def parcours_bfs_predicate(G, predicate, opaque) :
             current = F.popleft()
             N = G.neighbours(current)
         Init = False
-        print(N)
         for n in N :
             if n.state not in k :
                 k.add(n.state)
@@ -64,7 +63,6 @@ class RelationToGraph:
         return f"Graph(roots={liste}, relation={self.relation})"
 
 def isdeadlock(sem) : #sem c'est le graph (dit "sémantique")
-        print(sem)
         def lambda2(config) :
             return len(sem.actions(config)) == 0
         return lambda2
@@ -212,23 +210,3 @@ if __name__ == "__main__":
     print("N - found : ", n)
     print("K - visited : ", k)
 
-class NBitsConfig :
-    def __init__(self) :
-        self.bits = 0
-    def __eq__(self, o) :
-        if not isinstance(o, NBitsConfig) :
-            return False
-        return self.bits == o.bits
-    def __hash__(self) :
-        return hash(self.bits)
-    
-def create_nbits_soup(n) :
-    soup = Soup(NBitsConfig())
-    def flip(x) :
-        def behaviour(c) :
-            c.bits = c.bits^(1<<x)
-        return behaviour
-    for i in range(n) :
-        soup.add(Piece(f'flip{i}', lambda c : True, flip(i)))
-    return soup
-# devraient être utiles pour hanoi
