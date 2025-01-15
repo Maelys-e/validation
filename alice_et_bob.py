@@ -147,6 +147,7 @@ if __name__ == "__main__":
     def lambda2(config):
         if config.state in visited_configs:
             return True
+        # devrait pouvoir être enlevé
         visited_configs.add(config.state)
         actions = g2.actions(config)
         return len(actions) == 0
@@ -174,10 +175,11 @@ if __name__ == "__main__":
     def lambda2(config):
         if config.state in visited_configs:
             return True
+        # devrait pouvoir être enlevé aussi
         visited_configs.add(config.state)
         actions = g3.actions(config)
         return len(actions) == 0
-    print("\n-Lambda1-")
+    print("\n-Lambda1--")
     (o, n, k) = algo.predicate_finder(g6, lambda1)
     print("O : ", o)
     print("N : ", n)
@@ -187,3 +189,38 @@ if __name__ == "__main__":
     print("O : ", o)
     print("N : ", n)
     print("K : ", k)
+
+
+    print("\n---VERSION DU PROF : LAMBDA2 POUR LES 2 DERNIERES VERSIONS---\n")
+
+    print("\n-Version 2-")
+    print ("Relation : ", g2)
+    r = g5.roots
+    print ("Roots : ", r)
+    n = g5.neighbours(r[0])
+    print ("Neighbours : ", n)
+
+    (o, n, k) = algo.predicate_finder(g5, algo.isdeadlock(g2))
+    # ici on a appelé avec la sémantique g3 en argument, 
+    # ce qui éite de définir un lambda2 différent pour chaque graphe, 
+    # et on pourrait la mettre en bibliothèque (le test du deadlock 
+    # peut ainsi se faire sur n'importe quel système)
+    print("(O) - Is deadlock ? : ", o)
+    print("(N) - For what configuration ? : ", n)
+    print("(K) - Visited configurations : ", k)
+
+    print("\n-Version 3-")
+    print ("Relation : ", g3)
+    r = g6.roots
+    print ("Roots : ", r)
+    n = g6.neighbours(r[0])
+    print ("Neighbours : ", n)
+
+    (o, n, k) = algo.predicate_finder(g6, algo.isdeadlock(g3))
+    # ici on a appelé avec la sémantique g3 en argument, 
+    # ce qui éite de définir un lambda2 différent pour chaque graphe, 
+    # et on pourrait la mettre en bibliothèque (le test du deadlock 
+    # peut ainsi se faire sur n'importe quel système)
+    print("(O) - Is deadlock ? : ", o)
+    print("(N) - For what configuration ? : ", n)
+    print("(K) - Visited configurations : ", k)
