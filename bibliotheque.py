@@ -60,3 +60,8 @@ class RelationToGraph:
         for element in self.roots :
             liste.append(element.state)
         return f"Graph(roots={liste}, relation={self.relation})"
+
+def isdeadlock(sem) : #sem c'est le graph
+        def lambda2(config) :
+            return len(sem.actions(config)) == 0
+        return lambda2
