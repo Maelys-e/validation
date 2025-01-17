@@ -210,3 +210,24 @@ if __name__ == "__main__":
     print("N - found : ", n)
     print("K - visited : ", k)
 
+
+# un exemple pour générer des pièces automatiquement
+class NBitsConfig :
+    def __init__(self) :
+        self.bits = 0 # un entier : mis à 0 comme valeur initiale (un entier de 32 bits)
+    def __eq__(self, o) :
+        if not isinstance(o, NBitsConfig) :
+            return False
+        return self.bits == o.bits
+    def __hash__(self) :
+        return hash(self.bits)
+    
+def create_nbits_soup(n) : # n = le nombre de bits qu'on veut bouger sur self.bits
+    soup = Soup(NBitsConfig())
+    def flip(x) :
+        def behaviour(c) :
+            c.bits = c.bits^(1<<x) # on modifie des bits du nombre
+        return behaviour
+    for i in range(n) :
+        soup.add(Piece(f'flip{i}', lambda c : True, flip(i)))
+    return soup
