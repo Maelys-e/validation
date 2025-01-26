@@ -40,6 +40,6 @@ if __name__ == "__main__":
 
     
     resultat_cycle = cycle.cycles(graph, prog.program_chevaleresque_state, func.contrainte)
-    print("Cycles ? ", resultat_cycle[0])
-    print("Cycle : ", resultat_cycle[1])
+    print("\nRésultat des cycles : ", resultat_cycle)
+    print("\nDonc P3 est", resultat_cycle[0])
     
