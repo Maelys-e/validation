@@ -29,5 +29,5 @@ def finitude() :
     graph_5 = algo.RelationToGraph(soup_5)
     (o5, n5, k5) = algo.predicate_finder(graph_5, func.critical_bob)
 
-    return o1[0] and o2[0] and o3[0] and o4[0] and o5[0]
+    return o1[0] and o2[0] and o3[0] and o3bis[0] and o4[0] and o5[0]
         # Ici on ne rajoute pas 'not' devant le résultat parce que, contrairement à avant, si on trouve une solution alors la propriété est vérifiée
