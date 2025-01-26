@@ -12,10 +12,10 @@ On a 4 automates :
 
 En ignorant le chemin trivial qui reste dans l'état initial, les 4 propriétés à vérifier sont les suivantes :
 
-P1 : A<> !(alice = c et bob = c)
-P2 : !deadlock
-P3 : A[] (alice = c ou bob = c)
-P4 : (alice = w => alice = c) et (bob = w => bob = c)
+P1 : A<> !(alice = c et bob = c)\n
+P2 : !deadlock\n
+P3 : A[] (alice = c ou bob = c)\n
+P4 : (alice = w => alice = c) et (bob = w => bob = c)\n
 
 ## Tests
 
