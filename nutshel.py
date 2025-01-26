@@ -2,6 +2,7 @@ import biblio as algo
 import automates as prog
 import fonctions as func
 import detection_cycles as cycle
+import detection_finitude as finit
 
 if __name__ == "__main__":
 
@@ -63,6 +64,6 @@ if __name__ == "__main__":
 
     resultat_cycle = cycle.cycles(graph, prog.program_chevaleresque_state, func.contrainte)
     print("P3 : ", not resultat_cycle[0])
-    
-    
-    print("P4 :  ?\n")
+
+    answer = finit.finitude()
+    print("P4 : ", answer, "\n")
