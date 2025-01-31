@@ -1,5 +1,5 @@
 import copy
-import anciennes_versions.bibliotheque as algo
+import bibliotheque as algo
 
 def generate_graph_hanoi(roots, neighbours):
     list = copy.deepcopy(roots)
@@ -143,18 +143,44 @@ def predicate_hanoi(n) :
     return n.state[0] == n.state[1] # sont forcément nuls car il n'y a pas de doublons
 
 if __name__ == "__main__":
-    g4 = Hanoi(2)
+
+    print("\n--- Hanoi à 2 étages ---\n")
+
+    g2 = Hanoi(2)
+
+    r = g2.roots
+    print ("Roots : ", r)
+
+    (o, n, k) = algo.predicate_finder(g2, predicate_hanoi)
+
+    #print("K : ", k)
+    print("Solvabe ? ", o[0])
+    print("Etat final : ", n)
+
+
+    print("\n--- Hanoi à 3 étages ---\n")
+
+    g3 = Hanoi(3)
+
+    r = g3.roots
+    print ("Roots : ", r)
+
+    (o, n, k) = algo.predicate_finder(g3, predicate_hanoi)
+
+    #print("K : ", k)
+    print("Solvable ? ", o[0])
+    print("Etat final : ", n)
+
+
+    print("\n--- Hanoi à 4 étages ---\n")
+
+    g4 = Hanoi(4)
 
     r = g4.roots
     print ("Roots : ", r)
 
-    n = g4.neighbours(r[0])
-    print ("Neighbours : ", n)
-
-    print("Graph : ", g4)
-
     (o, n, k) = algo.predicate_finder(g4, predicate_hanoi)
 
-    print("K : ", k)
-    print("O : ", o)
-    print("N : ", n)
+    #print("K : ", k)
+    print("Solvable ? ", o[0])
+    print("Etat final : ", n)
